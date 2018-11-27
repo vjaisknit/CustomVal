@@ -1,0 +1,28 @@
+namespace CustomVal.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class AddSkill : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.SkillExpMappings",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        SkillID = c.Int(nullable: false),
+                        MinExp = c.Int(nullable: false),
+                        MaxExp = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropTable("dbo.SkillExpMappings");
+        }
+    }
+}
